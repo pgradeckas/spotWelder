@@ -12,6 +12,7 @@ lcd.print("+------------------+");
 void drawParamsLabels () {
 
 		lcd.clear();
+			lcd.clear();
 		lcd.setCursor(0, 0);
 		lcd.print("Heat (ms) :");
 		lcd.setCursor(0,1);
