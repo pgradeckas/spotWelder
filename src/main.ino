@@ -11,6 +11,7 @@ const int btn_weldDown = 10;
 const int weldPedal = A0;
 const int relay = A1;
 
+// button state related variables
 int state_btn_heatUp = 0;
 int state_btn_heatDown = 0;
 int state_btn_delayUp = 0;
@@ -23,7 +24,6 @@ bool weldDone = false;
 bool paramsScreenDrawn = false;
 
 //weld timing related variables
-
 int heatMsPrior = 0;
 int delayMsPrior = 0;
 int weldMsPrior = 0;
@@ -36,17 +36,14 @@ int weldMsMax = 200;
 int delta = 5;
 
 //delay timing related variables
-
 int delayForInputs = 250;
+
 // LCD
-
 const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
-LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);						                           // Initialise lcd
 
-//The setup function is called once at startup of the sketch
 void setup()
 {
-	Serial.begin(9600);
 	pinMode(btn_heatUp, INPUT);
 	pinMode(btn_heatDown, INPUT);
 	pinMode(btn_delayUp, INPUT);
@@ -56,11 +53,11 @@ void setup()
 	pinMode(weldPedal, INPUT);
 	pinMode(relay, OUTPUT);
 	digitalWrite(relay, LOW);
-	lcd.begin(20, 4); 										     // initialise 2004 LCD
+	lcd.begin(20, 4); 										                                         // initialise 2004 LCD
 	drawInitScreen();
-	delay(1000);                                                 // change to smart delay
+	delay(1000);
 }
 
 void loop() {
-	getInputs(); // just listen for inputs
+	getInputs();                                                                   // just listen for inputs
 }

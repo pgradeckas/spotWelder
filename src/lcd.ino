@@ -20,9 +20,9 @@ void drawParamsLabels () {
 		lcd.print("Weld (ms) :");
 		lcd.setCursor(0,3);
 		lcd.print("-==Pedal for Weld==-");
-		paramsScreenDrawn = true; // set to true so that names of adjustable variables are not redrawn
+		paramsScreenDrawn = true; 																									 // set to true so that names of adjustable variables are not redrawn
 }
-void drawParamsValues () {   // display parameter adjustment screen
+void drawParamsValues () {                                                       // display parameter adjustment screen
 
 if (heatMsCurrent != heatMsPrior) {
 	lcd.setCursor(15,0);

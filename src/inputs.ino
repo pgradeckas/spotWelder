@@ -1,21 +1,19 @@
 // ================== functions ========================== //
 
-void getInputs () {        									    // cycle through this function while not welding, allow to change params
-	readBtnStates(); // capture a press of any button
-	if(paramsScreenDrawn == false) {
+void getInputs () {        									                                     // cycle through this function while not welding, allow to change params
+	readBtnStates();                                                               // capture a press of any button
+	if(paramsScreenDrawn == false) {                                               // just for not to redraw screen every time, thus avoid flickering
 		drawParamsLabels();
 		}
 
-	Serial.println(btnStateChanged);
-	Serial.println(weldDone);
-		if (btnStateChanged == true || weldDone == true) {
+		if (btnStateChanged == true || weldDone == true) {                           // if got a button pushed
 			drawParamsValues();
 			delay(delayForInputs);
 		}
-	resetBtnStates();  											// reset states of the buttons after done with the execution
+	resetBtnStates();  											                                       // reset states of the buttons after done with the execution
 }
 
-void readBtnStates () {                                 // get states of the buttons
+void readBtnStates () {                                                          // listen for state changes of buttons
 
 	state_btn_heatUp = digitalRead(btn_heatUp);
 	state_btn_heatDown = digitalRead(btn_heatDown);
@@ -24,8 +22,8 @@ void readBtnStates () {                                 // get states of the but
 	state_btn_weldUp = digitalRead(btn_weldUp);
 	state_btn_weldDown = digitalRead(btn_weldDown);
 	state_btn_weldPedal = digitalRead(weldPedal);
-	// adjust heat, delay and weld variable values based on buttons pressed
 
+	// adjust heat, delay and weld variable values based on buttons pressed
 	if (state_btn_heatUp == HIGH) {
 		heatMsPrior = heatMsCurrent;
 		heatMsCurrent = heatMsCurrent + delta;
@@ -62,12 +60,12 @@ void readBtnStates () {                                 // get states of the but
 		btnStateChanged = 1;
 		}
 	else if (state_btn_weldPedal == LOW) {
-		fullWeld();                               // we're weld if pedal is pressed
+		fullWeld();                              																		 //do the weld cycle if pedal is pressed
 	}
 
 }
 
-void resetBtnStates () { // reset states of all buttons
+void resetBtnStates () { 																												 // reset states of all buttons
 	state_btn_heatUp = 0;
 	state_btn_heatDown = 0;
 	state_btn_delayUp = 0;
