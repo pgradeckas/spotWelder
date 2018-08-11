@@ -24,7 +24,6 @@ void readBtnStates () {                                 // get states of the but
 	state_btn_weldUp = digitalRead(btn_weldUp);
 	state_btn_weldDown = digitalRead(btn_weldDown);
 	state_btn_weldPedal = digitalRead(weldPedal);
-
 	// adjust heat, delay and weld variable values based on buttons pressed
 
 	if (state_btn_heatUp == HIGH) {
